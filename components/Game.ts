@@ -20,7 +20,7 @@ export class Game {
     this.context = canvas.getContext("2d")!;
     this.boat = new Boat(canvas.width / 2, canvas.height - 50, canvas.width);
     this.parachutists = [];
-    this.inputHandler = new InputHandler(this.boat, this);
+    this.inputHandler = new InputHandler(this.boat);
     this.renderer = new Renderer(this.context);
     this.score = 0;
     this.lives = 3;
@@ -49,7 +49,7 @@ export class Game {
       );
       this.lastDropTime = timestamp;
     }
-    this.boat.update();
+    // Boat is being updated by the InputHandler
     this.parachutists.forEach((parachutist) => parachutist.update());
     this.checkCollisions();
   }

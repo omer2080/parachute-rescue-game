@@ -17,8 +17,6 @@ export class Boat {
     this.maxX = canvasWidth - this.width;
   }
 
-  update() {} //currently empty
-
   moveLeft(): void {
     this.x = Math.max(0, this.x - this.speed);
   }
