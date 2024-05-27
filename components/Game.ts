@@ -13,19 +13,19 @@ export class Game {
   private score: number;
   private lives: number;
   private lastDropTime: number;
-  private dropInterval: number;
+  private parachutistDropInterval: number;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.context = canvas.getContext("2d")!;
-    this.boat = new Boat(canvas.width / 2, canvas.height - 50, canvas.width);
+    this.boat = new Boat(canvas.width / 4, canvas.height - 50, canvas.width);
     this.parachutists = [];
     this.inputHandler = new InputHandler(this.boat);
     this.renderer = new Renderer(this.context);
     this.score = 0;
     this.lives = 3;
     this.lastDropTime = 0;
-    this.dropInterval = 2000; // 2 seconds
+    this.parachutistDropInterval = 2000; // 2 seconds
   }
 
   start(): void {
@@ -43,7 +43,7 @@ export class Game {
   }
 
   private update(timestamp: number): void {
-    if (timestamp - this.lastDropTime > this.dropInterval) {
+    if (timestamp - this.lastDropTime > this.parachutistDropInterval) {
       this.parachutists.push(
         new Parachutist(Math.random() * this.canvas.width)
       );

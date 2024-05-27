@@ -1,4 +1,4 @@
-import { Game } from "./components/Game.ts";
+import { Game } from "./components/Game";
 
 const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement;
 const game = new Game(canvas);
