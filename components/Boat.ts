@@ -1,7 +1,5 @@
 import { Parachutist } from "./Parachutist";
 
-// components/Boat.ts
-
 export class Boat {
   private x: number;
   private y: number;
