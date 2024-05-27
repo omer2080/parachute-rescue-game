@@ -20,7 +20,7 @@ export class Game {
     this.context = canvas.getContext("2d")!;
     this.boat = new Boat(canvas.width / 2, canvas.height - 50, canvas.width);
     this.parachutists = [];
-    this.inputHandler = new InputHandler(this.boat);
+    this.inputHandler = new InputHandler(this.boat, this);
     this.renderer = new Renderer(this.context);
     this.score = 0;
     this.lives = 3;
@@ -78,7 +78,7 @@ export class Game {
     });
   }
 
-  private endGame(): void {
+  public endGame(): void {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.font = "48px serif";
     this.context.textAlign = "center";
