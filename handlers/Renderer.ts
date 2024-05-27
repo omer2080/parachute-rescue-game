@@ -24,12 +24,12 @@ export class Renderer {
     );
   }
 
-  renderScore(score: number) {
+  renderScore(score: number): void {
     this.context.font = "24px serif";
     this.context.fillText(`Score: ${score}`, 10, 30);
   }
 
-  renderLives(lives: number) {
+  renderLives(lives: number): void {
     this.context.font = "24px serif";
     this.context.fillText(`Lives: ${lives}`, 10, 60);
   }

@@ -17,29 +17,29 @@ export class Boat {
     this.maxX = canvasWidth - this.width;
   }
 
-  update() {}
+  update() {} //currently empty
 
-  moveLeft() {
+  moveLeft(): void {
     this.x = Math.max(0, this.x - this.speed);
   }
 
-  moveRight() {
+  moveRight(): void {
     this.x = Math.min(this.maxX, this.x + this.speed);
   }
 
-  getX() {
+  getX(): number {
     return this.x;
   }
 
-  getY() {
+  getY(): number {
     return this.y;
   }
 
-  getWidth() {
+  getWidth(): number {
     return this.width;
   }
 
-  getHeight() {
+  getHeight(): number {
     return this.height;
   }
 

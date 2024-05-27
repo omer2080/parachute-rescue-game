@@ -7,31 +7,31 @@ export class Parachutist {
   private height: number;
   private speed: number;
 
-  constructor(x: number, y: number) {
+  constructor(x: number) {
     this.x = x;
-    this.y = y;
+    this.y = 0;
     this.width = 20;
     this.height = 20;
     this.speed = 2;
   }
 
-  update() {
+  update(): void {
     this.y += this.speed;
   }
 
-  getX() {
+  getX(): number {
     return this.x;
   }
 
-  getY() {
+  getY(): number {
     return this.y;
   }
 
-  getWidth() {
+  getWidth(): number {
     return this.width;
   }
 
-  getHeight() {
+  getHeight(): number {
     return this.height;
   }
 

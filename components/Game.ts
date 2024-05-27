@@ -28,24 +28,24 @@ export class Game {
     this.dropInterval = 2000; // 2 seconds
   }
 
-  start() {
+  start(): void {
     requestAnimationFrame(this.gameLoop.bind(this));
   }
 
-  private gameLoop(timestamp: number) {
+  private gameLoop(timestamp: number): void {
     this.update(timestamp);
     this.render();
     if (this.lives > 0) {
-      requestAnimationFrame(this.gameLoop.bind(this));
+      requestAnimationFrame(this.gameLoop.bind(this)); // bind(this) ensures that the 'this' keyword inside gameLoop refers to the current instance of the Game class
     } else {
       this.endGame();
     }
   }
 
-  private update(timestamp: number) {
+  private update(timestamp: number): void {
     if (timestamp - this.lastDropTime > this.dropInterval) {
       this.parachutists.push(
-        new Parachutist(Math.random() * this.canvas.width, 0)
+        new Parachutist(Math.random() * this.canvas.width)
       );
       this.lastDropTime = timestamp;
     }
@@ -54,7 +54,7 @@ export class Game {
     this.checkCollisions();
   }
 
-  private render() {
+  private render(): void {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.renderer.renderBoat(this.boat);
     this.parachutists.forEach((parachutist) =>
@@ -64,7 +64,7 @@ export class Game {
     this.renderer.renderLives(this.lives);
   }
 
-  private checkCollisions() {
+  private checkCollisions(): void {
     this.parachutists = this.parachutists.filter((parachutist) => {
       if (parachutist.getY() >= this.canvas.height) {
         this.lives -= 1;
@@ -78,7 +78,7 @@ export class Game {
     });
   }
 
-  private endGame() {
+  private endGame(): void {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.font = "48px serif";
     this.context.textAlign = "center";
