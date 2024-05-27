@@ -1,8 +1,10 @@
 import { Parachutist } from "./Parachutist";
 
+// components/Boat.ts
+
 export class Boat {
-  public x: number;
-  public y: number;
+  private x: number;
+  private y: number;
   private width: number;
   private height: number;
   private speed: number;
@@ -17,9 +19,7 @@ export class Boat {
     this.maxX = canvasWidth - this.width;
   }
 
-  update() {
-    // Movement handled by InputHandler
-  }
+  update() {}
 
   moveLeft() {
     this.x = Math.max(0, this.x - this.speed);
@@ -29,12 +29,28 @@ export class Boat {
     this.x = Math.min(this.maxX, this.x + this.speed);
   }
 
+  getX() {
+    return this.x;
+  }
+
+  getY() {
+    return this.y;
+  }
+
+  getWidth() {
+    return this.width;
+  }
+
+  getHeight() {
+    return this.height;
+  }
+
   isCaught(parachutist: Parachutist): boolean {
     return (
-      parachutist.x >= this.x &&
-      parachutist.x <= this.x + this.width &&
-      parachutist.y + parachutist.height >= this.y &&
-      parachutist.y <= this.y + this.height
+      parachutist.getX() >= this.x &&
+      parachutist.getX() <= this.x + this.width &&
+      parachutist.getY() + parachutist.getHeight() >= this.y &&
+      parachutist.getY() <= this.y + this.height
     );
   }
 }

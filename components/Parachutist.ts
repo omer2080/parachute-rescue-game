@@ -1,5 +1,3 @@
-// components/Parachutist.ts
-
 import { Boat } from "./Boat";
 
 export class Parachutist {
